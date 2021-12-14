@@ -5,6 +5,7 @@ import lombok.*;
 
 @Getter
 @Setter
+@Builder
 @NoArgsConstructor
 public class OrderResponse {
     @NonNull
@@ -13,4 +14,9 @@ public class OrderResponse {
     @NonNull
     @ApiModelProperty(notes = "The order details")
     private String orderDetails;
+
+    {
+    }
+
+
 }

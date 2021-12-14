@@ -5,6 +5,7 @@ import com.abri.tech.orderservice.response.OrderResponse;
 import com.abri.tech.orderservice.response.RestaurantResponse;
 import com.abri.tech.orderservice.service.RestaurantOrderService;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Setter
 @Getter
 @Slf4j
+
 public class OrderController implements OrderApi {
 
     private RestaurantOrderService restaurantOrderService;
@@ -30,7 +32,8 @@ public class OrderController implements OrderApi {
                 restaurantOrder.getCustomerName(),
                 restaurantOrder.getMenuName());
 
-        var orderResponse = restaurantOrderService.saveOrder(restaurantOrder);
+        var orderResponse = OrderResponse.builder().orderId(123).orderDetails().build();
+
         return ResponseEntity.status(HttpStatus.OK).body(orderResponse);
     }
 
